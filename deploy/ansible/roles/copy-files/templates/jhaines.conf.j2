@@ -1,0 +1,21 @@
+server {
+    listen 80;
+    listen [::]:80;
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name jhain.es www.jhain.es;
+
+    ssl_certificate /etc/letsencrypt/live/jhain.es/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/jhain.es/privkey.pem;
+
+    if ($scheme != "https") {
+        return 301 https://$host$request_uri;
+    }
+
+    root /var/www/jhain.es;
+
+    location / {
+        try_files $uri /index.html;
+    }
+}

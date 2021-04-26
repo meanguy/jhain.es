@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true
+
+  roles:
+    - add-user
+    - install-deps
+    - copy-files
+    - fail2ban

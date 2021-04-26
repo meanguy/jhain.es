@@ -1,0 +1,12 @@
+---
+- name: copy fail2ban config
+  template:
+    src: jail.local.j2
+    dest: /etc/fail2ban/jail.local
+    mode: 0664
+
+- name: enable fail2ban
+  service:
+    name: fail2ban
+    state: reloaded
+    enabled: true

@@ -1,0 +1,23 @@
+---
+# During deployment, ansible may run before the SSH server on the host is
+# available. This blocks ansible runs until either the SSH server is available
+# or the timeout is reached.
+- hosts: all
+  gather_facts: false
+
+  roles:
+    - wait-for
+
+- hosts: all
+  gather_facts: true
+  become: true
+
+  roles:
+    - add-user
+    - install-deps
+    - copy-files
+    - fail2ban
+    - geerlingguy.certbot
+    - enable-nginx
+  vars_files:
+    - vars/certbot.yml

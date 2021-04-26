@@ -1,0 +1,29 @@
+---
+- name: create admin user
+  user:
+    name: "{{ admin_user.name }}"
+    state: present
+    create_home: true
+    generate_ssh_key: true
+    skeleton: /etc/skel
+    shell: "/usr/bin/{{ admin_user.shell }}"
+
+- name: enable password-less sudo for admin user
+  template:
+    src: 99-sudoer.j2
+    dest: "/etc/sudoers.d/99-{{ admin_user.name }}"
+  vars:
+    user: "{{ admin_user.name }}"
+
+- name: authorize admin user ssh key
+  authorized_key:
+    user: "{{ admin_user.name }}"
+    key: "{{ admin_user.ssh_public_key }}"
+
+- name: create nginx service user
+  user:
+    name: nginx
+    create_home: false
+    shell: /usr/bin/false
+    system: true
+    state: present

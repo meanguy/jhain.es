@@ -1,0 +1,9 @@
+@import '@/styles/_variables.scss';
+
+// Import ordering matters here
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+
+body {
+    background-color: $jh-white;
+}

@@ -1,0 +1,33 @@
+[DEFAULT]
+enabled = false
+
+banaction = iptables-multiport
+banaction_allports = iptables-allports
+
+bantime = 1h
+findtime = 10m
+maxretry = 5
+
+ignoreself = true
+ignoreip = 127.0.0.1/8 10.0.0.0/24 ::1
+
+backend = systemd
+
+usedns = warn
+logencoding = utf-8
+
+[INCLUDES]
+before = paths-debian.conf
+
+[sshd]
+enabled = true
+port = ssh
+
+[nginx-botsearch]
+enabled = true
+port = http,https
+logpath = %(nginx_access_log)s
+
+[php-url-fopen]
+port = http,https
+logpath = %(nginx_access_log)s

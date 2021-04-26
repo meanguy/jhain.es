@@ -1,0 +1,27 @@
+---
+- name: add nginx repo from PPA
+  apt_repository:
+    repo: ppa:nginx/stable
+
+- name: install required system-wide packages
+  apt:
+    name:
+    - ansible
+    - fail2ban
+    - nginx
+    - python3
+    - sudo
+    - zsh
+    state: present
+    update_cache: true
+
+- name: update system-wide packages
+  apt:
+    upgrade: full
+
+# nginx needs to be disabled until SSL certs are installed else it will crash.
+- name: disable nginx temporarily
+  service:
+    name: nginx
+    enabled: true
+    state: stopped
