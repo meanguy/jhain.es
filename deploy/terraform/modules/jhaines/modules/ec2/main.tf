@@ -36,4 +36,8 @@ resource "aws_instance" "instance" {
     device_index         = 0
     network_interface_id = aws_network_interface.nic.id
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
