@@ -6,5 +6,5 @@ locals {
   fqdn          = "jhain.es"
   instance_type = "t3.micro"
   remote_user   = "jhaines"
-  ssh_key_pair  = "pangu"
+  ssh_key_pair  = "jhaines"
 }

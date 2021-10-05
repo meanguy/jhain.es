@@ -40,4 +40,8 @@ resource "aws_instance" "instance" {
   lifecycle {
     create_before_destroy = true
   }
+
+  tags = {
+    Name = "jhaines-webserver"
+  }
 }
