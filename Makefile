@@ -38,7 +38,6 @@ terraform:
 .PHONY: terraform-auto-approve
 terraform-auto-approve:
 	cd deploy/terraform \
-	&& terraform plan \
 	&& terraform apply \
 		-auto-approve
 

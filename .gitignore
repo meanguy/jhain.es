@@ -22,8 +22,10 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-**.tfstate
-**.tfstate.backup
-**.lock.hcl
-**.tfstate.lock.info
-.terraform
+**/.mypy_cache
+**/.terraform
+**/*.lock.hcl
+**/*.tfstate
+**/*.tfstate.backup
+
+**/*.log

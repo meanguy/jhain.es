@@ -21,6 +21,8 @@
         </span>
       </template>
       <span class="jh-body">
+        <b-link href="https://blog.jhain.es/">blog</b-link>
+        |
         <b-link href="https://www.linkedin.com/in/jhaindotes/">linkedin</b-link>
         |
         <b-link href="https://github.com/j-haines/">github</b-link>
